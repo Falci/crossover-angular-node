@@ -8,34 +8,14 @@
   </md-toolbar>
   <md-content layout-padding>
     <md-list flex>
-      <md-list-item class="md-2-line">
-        <md-icon md-svg-src="assets/images/bread.svg" class="s24" aria-label="Bread"></md-icon>
+      <md-list-item class="md-2-line" ng-repeat="item in $inv.items">
+        <md-icon md-svg-src="assets/images/{{item.icon}}.svg" aria-label="{{item.name}}"></md-icon>
         <div class="md-list-item-text">
-          <h3>Bread</h3>
-          <p>30 items</p>
+          <h3>{{item.name}}</h3>
+          <p><ng-pluralize count="item.quant" when="{'0': 'No items', '1': '1 item', '{} items'}"></ng-pluralize></p>
         </div>
         <md-button class="md-icon-button" aria-label="Auction">
-          <md-icon md-svg-src="assets/images/gavel.svg" class="s24" aria-label="Auction"></md-icon>
-        </md-button>
-      </md-list-item>
-      <md-list-item class="md-2-line">
-        <md-icon md-svg-src="assets/images/carrot.svg" class="s24" aria-label="Carrot"></md-icon>
-        <div class="md-list-item-text">
-          <h3>Carrot</h3>
-          <p>18 items</p>
-        </div>
-        <md-button class="md-icon-button" aria-label="Auction">
-          <md-icon md-svg-src="assets/images/gavel.svg" class="s24" aria-label="Auction"></md-icon>
-        </md-button>
-      </md-list-item>
-      <md-list-item class="md-2-line">
-        <md-icon md-svg-src="assets/images/diamond.svg" class="s24" aria-label="Diamond"></md-icon>
-        <div class="md-list-item-text">
-          <h3>Diamond</h3>
-          <p>1 item</p>
-        </div>
-        <md-button class="md-icon-button" aria-label="Auction">
-          <md-icon md-svg-src="assets/images/gavel.svg" class="s24" aria-label="Auction"></md-icon>
+          <md-icon md-svg-src="assets/images/gavel.svg" aria-label="Auction"></md-icon>
         </md-button>
       </md-list-item>
     </md-list>

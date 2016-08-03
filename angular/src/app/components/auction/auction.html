@@ -6,7 +6,60 @@
       </h2>
     </div>
   </md-toolbar>
-  <md-content layout-padding>
-    Auction here
-  </md-content>
-</md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">10 Breads</span>
+        <span class="md-subhead">
+          Auction by <strong>Falci</strong>
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <form name="form" layout="column">
+
+        <div layout="row" layout-align="space-between center">
+          <div>
+            <div layout="row" layout-padding>
+              <div flex="none">
+                <md-icon md-font-library="material-icons">access_time</md-icon>
+              </div>
+              <div flex>
+                <span>90 seconds left</span>
+              </div>
+            </div>
+            <div layout="row" layout-padding>
+              <div flex="none">
+                <md-icon md-font-library="material-icons">attach_money</md-icon>
+              </div>
+              <div flex>
+                <span>135 coins</span>
+              </div>
+            </div>
+          </div>
+          <div class="md-media-lg card-media">
+            <md-icon md-svg-src="assets/images/bread.svg" aria-label="Bread" ng-style="{'font-size': '150px', height: '150px', width: '150px'}"></md-icon>
+          </div>
+        </div>
+
+
+        <div layout="row" layout-padding>
+          <md-input-container class="md-block" >
+            <label>Your bid</label>
+            <input type="number" ng-value="136" required md-no-asterisk name="bid" ng-model="bid" min="1" ng-min="136" ng-max="1000">
+            <div ng-messages="form.bid.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="min">Your bid must to be greater than the current bid (135)</div>
+              <div ng-message="max">Insufficient funds (max: 1000)</div>
+            </div>
+          </md-input-container>
+          <div flex=""></div>
+          <md-button>
+            Place Bid
+          </md-button>
+        </div>
+
+      </form>
+
+
+    </md-card-content>
+  </md-card>

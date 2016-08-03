@@ -6,7 +6,9 @@
   function inventory() {
     return {
       restrict: 'E',
-      templateUrl: 'app/components/inventory/inventory.html'
+      templateUrl: 'app/components/inventory/inventory.html',
+      controller: 'InventoryController',
+      controllerAs: '$inv'
     };
 
   }

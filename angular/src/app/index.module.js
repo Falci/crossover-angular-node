@@ -5,6 +5,7 @@
     .module('ebid', [
       'ui.router',
       'ngMaterial',
+      'ngMessages',
       'toastr'
     ]);
 
