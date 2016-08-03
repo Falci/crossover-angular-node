@@ -1,0 +1,4 @@
+angular/.tmp
+angular/bower_components
+angular/node_modules
+node/node_modules
