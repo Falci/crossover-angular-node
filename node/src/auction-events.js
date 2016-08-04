@@ -20,6 +20,7 @@ class AuctionEvents {
 
   watch() {
     emitter.on('auction:changed', () => this.activate());
+    emitter.on('user:login', () => this.activate());
   }
 
   static instance(io) {

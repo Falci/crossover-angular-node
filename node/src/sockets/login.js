@@ -1,16 +1,14 @@
-let log = require('easy-log'),
+let events = require('../events'),
   UserDao = require('../dao/users'),
   userDao = new UserDao();
 
 exports.register = (socket) => {
   socket.on('login', username => {
-    log.success(username + ' in');
 
     userDao.findOrCreate(username)
       .then(user => {
-        log.off('socket >> login');
-        log.off(user);
         socket.emit('login', user);
+        events.emit('user:login', user);
       });
 
     socket.username = username;
