@@ -1,0 +1,49 @@
+<md-dialog aria-label="Start Auction"  ng-cloak>
+  <form name="auction">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Start Auction</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$dialog.cancel()">
+          <md-icon md-font-library="material-icons">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="row">
+          <div flex layout="column">
+            <md-input-container class="md-block">
+              <label>Quantity</label>
+              <input type="number" ng-min="1" ng-max="$dialog.auction.product.quant" required name="quant" ng-model="$dialog.auction.quant">
+              <div ng-messages="auction.quant.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="max">You have only {{$dialog.auction.product.quant}} available.</div>
+                <div ng-message="min">Less than one? How so?</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Initial bid</label>
+              <input type="number" ng-min="1" required name="bid" ng-model="$dialog.auction.bid">
+              <div ng-messages="auction.bid.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="min">Free?</div>
+              </div>
+            </md-input-container>
+
+          </div>
+          <div flex="none" layout-padding>
+            <div class="md-media-lg">
+              <md-icon md-svg-src="assets/images/{{$dialog.auction.product.icon}}.svg" aria-label="{{$dialog.auction.product.name}}" ng-style="{'font-size': '150px', height: '150px', width: '150px'}"></md-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="$dialog.cancel()">Cancel</md-button>
+      <md-button ng-click="$dialog.submit()" ng-disabled="auction.$invalid">Start Auction</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

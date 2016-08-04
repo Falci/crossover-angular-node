@@ -6,7 +6,9 @@
   function stats() {
     return {
       restrict: 'E',
-      templateUrl: 'app/components/stats/stats.html'
+      templateUrl: 'app/components/stats/stats.html',
+      controller: 'StatsController',
+      controllerAs: '$stats'
     };
 
   }

@@ -3,16 +3,23 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "dotenv": "^2.0.0",
     "easy-log": "^1.0.0",
     "express": "~4.13.4",
+    "express-load": "^1.1.15",
+    "http-status-codes": "^1.0.6",
     "jade": "~1.11.0",
+    "knex": "^0.11.9",
+    "knexnest": "^0.3.4",
     "morgan": "~1.7.0",
+    "pg": "^6.0.3",
+    "q": "^1.4.1",
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.4.8"
   }

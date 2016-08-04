@@ -16,7 +16,7 @@
         <md-icon md-font-library="material-icons">person</md-icon>
       </div>
       <div flex>
-        <span>Falci</span>
+        <span>{{$stats.user.username}}</span>
       </div>
     </div>
     <div layout="row" layout-padding>
@@ -24,7 +24,7 @@
         <md-icon md-font-library="material-icons">attach_money</md-icon>
       </div>
       <div flex>
-        <span>1000</span>
+        <span>{{$stats.user.coins}}</span>
       </div>
     </div>
   </md-content>

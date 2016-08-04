@@ -9,17 +9,34 @@
     this.$get = socketService;
 
     function socketService($q) {
+      // TODO refactor: this service knows too much
       var service = {
-        login: login
+        login: login,
+        newAuction: newAuction,
+        on: socket.on
       };
 
-      function login(username) {
-        socket.emit('login', username);
+      return service;
 
-        return $q.resolve();
+      function login(username) {
+        return socketAsPromise('login', username);
       }
 
-      return service;
+      function newAuction(data) {
+        socket.emit('new-auction', data);
+      }
+
+      function socketAsPromise(event, data) {
+        var deferred = $q.defer();
+
+        socket.on(event, function (result) {
+          deferred.resolve(result);
+        });
+
+        socket.emit(event, data);
+
+        return deferred.promise;
+      }
     }
   }
 

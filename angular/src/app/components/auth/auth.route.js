@@ -18,7 +18,8 @@
         url: '/login',
         templateUrl: 'app/components/auth/login.html',
         controller: 'LoginController',
-        controllerAs: '$ctrl'
+        controllerAs: '$ctrl',
+        publicAccess: true
       });
 
     $urlRouterProvider.otherwise('/auth/login');

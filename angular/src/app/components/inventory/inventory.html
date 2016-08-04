@@ -12,9 +12,9 @@
         <md-icon md-svg-src="assets/images/{{item.icon}}.svg" aria-label="{{item.name}}"></md-icon>
         <div class="md-list-item-text">
           <h3>{{item.name}}</h3>
-          <p><ng-pluralize count="item.quant" when="{'0': 'No items', '1': '1 item', '{} items'}"></ng-pluralize></p>
+          <p><ng-pluralize count="item.quant" when="{'0': 'No items', '1': '1 item', 'other':'{} items'}"></ng-pluralize></p>
         </div>
-        <md-button class="md-icon-button" aria-label="Auction">
+        <md-button class="md-icon-button" aria-label="Auction" ng-click="$inv.openAuctionDialog($event, item)">
           <md-icon md-svg-src="assets/images/gavel.svg" aria-label="Auction"></md-icon>
         </md-button>
       </md-list-item>

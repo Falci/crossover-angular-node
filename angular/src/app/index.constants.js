@@ -5,6 +5,6 @@
   angular
     .module('ebid')
     .constant('io', io)
-    .constant('moment', moment);
-
+    .constant('moment', moment)
+    .constant('baseUrl', '/api');
 })();

@@ -33,7 +33,10 @@ function browserSyncInit(baseDir, browser) {
    *
    * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.9.0/README.md
    */
-  server.middleware = proxyMiddleware('/socket.io', {target: 'http://localhost:4000/', ws: true});
+  server.middleware = [
+    proxyMiddleware('/socket.io', {target: 'http://localhost:4000/', ws: true}),
+    proxyMiddleware('/api', {target: 'http://localhost:4000'})
+  ];
 
   browserSync.instance = browserSync.init({
     startPath: '/',
