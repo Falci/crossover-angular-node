@@ -1,4 +1,5 @@
 const emitter = require('./events'),
+  log = require('easy-log'),
   AuctionDao = require('./dao/auction'),
   auctionDao = new AuctionDao();
 
@@ -11,10 +12,12 @@ class AuctionEvents {
   }
 
   emitQueue(queue) {
+    log.off('socket >> queue');
     this.io.emit('queue', queue);
   }
 
   emitAuction(auction){
+    log.off('socket >> auction');
     this.io.emit('auction', auction);
   }
 
@@ -36,7 +39,21 @@ class AuctionEvents {
           return;
         }
 
-        let current = auctions.shift();
+        let current = auctions.shift(),
+          expiration = 90,
+          ms = 1000;
+
+        if(!current.finish) { // starting now
+          current.finish = new Date().getTime() + expiration * ms;
+
+          auctionDao.updateTime(current)
+            .finally(res => {
+              log.info(res);
+            });
+        }
+
+        // handle time diff between server and client;
+        current.finishIn = parseInt((current.finish - new Date().getTime()) / ms, 10);
 
         this.emitQueue(auctions);
         this.emitAuction(current);

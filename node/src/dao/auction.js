@@ -1,3 +1,4 @@
+/*eslint quote-props: 0*/
 'use strict';
 
 let knex = require('../knex'),
@@ -7,6 +8,7 @@ class auctionDao {
 
   list() {
     let resultSet = knex.select(
+      'a.id as _id',
       'a.bid as _bid',
       'p.name as _product_name',
       'p.icon as _product_icon',
@@ -30,6 +32,14 @@ class auctionDao {
       .returning('*')
       .insert(data)
       .then(resultSet => resultSet.pop());
+  }
+
+  updateTime(auction) {
+    return knex('auctions')
+      .where('id', auction.id)
+      .update({
+        'finish_at': new Date(auction.finish)
+      });
   }
 
   remove(id) {

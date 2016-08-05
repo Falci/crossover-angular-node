@@ -13,7 +13,7 @@
       var service = {
         login: login,
         newAuction: newAuction,
-        on: socket.on
+        on: on
       };
 
       return service;
@@ -24,6 +24,10 @@
 
       function newAuction(data) {
         socket.emit('new-auction', data);
+      }
+
+      function on(event, callback) {
+        return socket.on(event, callback);
       }
 
       function socketAsPromise(event, data) {

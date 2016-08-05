@@ -6,7 +6,9 @@
   function auction() {
     return {
       restrict: 'E',
-      templateUrl: 'app/components/auction/auction.html'
+      templateUrl: 'app/components/auction/auction.html',
+      controller: 'AuctionController',
+      controllerAs: '$auction'
     };
 
   }

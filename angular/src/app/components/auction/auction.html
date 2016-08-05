@@ -8,9 +8,9 @@
   </md-toolbar>
     <md-card-title>
       <md-card-title-text>
-        <span class="md-headline">10 Breads</span>
+        <span class="md-headline">{{$auction.current.quant}} {{$auction.current.name}}</span>
         <span class="md-subhead">
-          Auction by <strong>Falci</strong>
+          Auction by <strong>{{$auction.current.user.username}}</strong>
         </span>
       </md-card-title-text>
     </md-card-title>
@@ -24,7 +24,7 @@
                 <md-icon md-font-library="material-icons">access_time</md-icon>
               </div>
               <div flex>
-                <span>90 seconds left</span>
+                <span>{{$auction.current.finishIn}} seconds left</span>
               </div>
             </div>
             <div layout="row" layout-padding>
@@ -32,7 +32,7 @@
                 <md-icon md-font-library="material-icons">attach_money</md-icon>
               </div>
               <div flex>
-                <span>135 coins</span>
+                <span>{{$auction.current.bid}} coins</span>
               </div>
             </div>
           </div>
@@ -60,6 +60,7 @@
 
       </form>
 
-
+      <pre>{{$auction.queue|json}}</pre>
+      <pre>{{$auction.auction|json}}</pre>
     </md-card-content>
   </md-card>
